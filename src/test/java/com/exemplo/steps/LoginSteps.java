@@ -1,9 +1,13 @@
 package com.exemplo.steps;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
@@ -11,12 +15,15 @@ import io.cucumber.java.en.When;
 
 public class LoginSteps {
     WebDriver navegador;
+   
     
-
     @Given("acesso o site saucedemo")
     public void acesso_o_site_saucedemo() {
+        ChromeOptions options = new ChromeOptions();
+        options.addArguments("--guest");
+
         System.setProperty("webdriver.chrome.driver", "C:\\WebDrivers\\chromedriver.exe");
-        navegador = new ChromeDriver();
+        navegador = new ChromeDriver(options);
         navegador.get("https://www.saucedemo.com/");
     }
 
